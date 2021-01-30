@@ -1,0 +1,114 @@
+ros-melodic-mqtt-bridge (1.2.0-1bionic) bionic; urgency=high
+
+  * added LocalServiceProxy
+  * renamed to RemoteService
+  * Contributors: Marc Hanheide
+
+ -- Marc Hanheide <marc@hanheide.net>  Sat, 30 Jan 2021 00:00:00 -0000
+
+ros-melodic-mqtt-bridge (1.1.0-1bionic) bionic; urgency=high
+
+  * Merge pull request #1 <https://github.com/LCAS/mqtt_bridge/issues/1> from LCAS/remoteserver
+    Remoteserver implementation complete
+  * implementation of RemoteServer working
+  * WIP: towards a remote server call
+  * Contributors: Marc Hanheide
+
+ -- Marc Hanheide <marc@hanheide.net>  Sat, 30 Jan 2021 00:00:00 -0000
+
+ros-melodic-mqtt-bridge (1.0.1-1bionic) bionic; urgency=high
+
+  * missing install target
+  * Merge branch 'pr_upstream' into melodic-devel
+  * example now also has DynamicServer example
+    and further examples of qos and latch
+  * action server launch file is working
+    with prefix and dynamic server
+  * DynamicServer implementation working
+  * added launching own MQTT server
+  * removed
+  * intial actionlib mqtt setup
+  * support for latched (retained) topics and QoS
+  * Contributors: Marc Hanheide
+
+ -- Marc Hanheide <marc@hanheide.net>  Fri, 29 Jan 2021 00:00:00 -0000
+
+ros-melodic-mqtt-bridge (1.0.0-1bionic) bionic; urgency=high
+
+  * 0.2.1
+  * changelog
+  * changed version number
+  * example now also has DynamicServer example
+    and further examples of qos and latch
+  * action server launch file is working
+    with prefix and dynamic server
+  * DynamicServer implementation working
+  * added launching own MQTT server
+  * removed
+  * intial actionlib mqtt setup
+  * support for latched (retained) topics and QoS
+  * ignore vscode
+  * changed maintainer
+  * fix install target for directories
+  * Contributors: Marc Hanheide
+
+ -- Marc Hanheide <marc@hanheide.net>  Fri, 29 Jan 2021 00:00:00 -0000
+
+ros-melodic-mqtt-bridge (0.2.1-1bionic) bionic; urgency=high
+
+  * changed version number
+  * example now also has DynamicServer example
+    and further examples of qos and latch
+  * action server launch file is working
+    with prefix and dynamic server
+  * DynamicServer implementation working
+  * added launching own MQTT server
+  * removed
+  * intial actionlib mqtt setup
+  * support for latched (retained) topics and QoS
+  * ignore vscode
+  * changed maintainer
+  * fix install target for directories
+  * Contributors: Marc Hanheide
+
+ -- Marc Hanheide <marc@hanheide.net>  Fri, 29 Jan 2021 00:00:00 -0000
+
+ros-melodic-mqtt-bridge (0.1.8-1bionic) bionic; urgency=high
+
+  * configure rostest and run it on circleci (#41 <https://github.com/groove-x/mqtt_bridge/issues/41>)
+  * split requirements.txt (#38 <https://github.com/groove-x/mqtt_bridge/issues/38>)
+  * add unittests (#37 <https://github.com/groove-x/mqtt_bridge/issues/37>)
+  * Fix 'install_requires' warning when building with --install (#32 <https://github.com/groove-x/mqtt_bridge/issues/32>)
+  * Contributors: Jacob Seibert, Junya Hayashi
+
+ -- Marc Hanheide <marc@hanheide.net>  Thu, 31 Dec 2020 00:00:00 -0000
+
+ros-melodic-mqtt-bridge (0.1.7-1bionic) bionic; urgency=high
+
+  * Fix mqtt subscribing to private path (#27 <https://github.com/groove-x/mqtt_bridge/issues/27>)
+  * Fix frequency limit (#26 <https://github.com/groove-x/mqtt_bridge/issues/26>)
+  * Add bson module in requirements.txt (#10 <https://github.com/groove-x/mqtt_bridge/issues/10>)
+  * Fix Bridge not to fall when ros msg cannot be created (#4 <https://github.com/groove-x/mqtt_bridge/issues/4>)
+  * Contributors: 5tan, Junya Hayashi, Tomas Cernik, Yuma Mihira, kapilPython
+
+ -- Marc Hanheide <marc@hanheide.net>  Sat, 20 Jun 2020 23:00:00 -0000
+
+ros-melodic-mqtt-bridge (0.1.6-1bionic) bionic; urgency=high
+
+  * fix if frequency is none (#2 <https://github.com/groove-x/mqtt_bridge/issues/2>)
+
+ -- Marc Hanheide <marc@hanheide.net>  Fri, 10 Nov 2017 00:00:00 -0000
+
+ros-melodic-mqtt-bridge (0.1.5-1bionic) bionic; urgency=high
+
+  * Update configurations
+
+ -- Marc Hanheide <marc@hanheide.net>  Wed, 07 Dec 2016 00:00:00 -0000
+
+ros-melodic-mqtt-bridge (0.1.0-1bionic) bionic; urgency=high
+
+  * Initial Release
+
+ -- Marc Hanheide <marc@hanheide.net>  Sun, 04 Dec 2016 00:00:00 -0000
+
+
