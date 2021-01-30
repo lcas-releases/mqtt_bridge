@@ -1,3 +1,26 @@
+## mqtt_bridge_lcas (kinetic) - 1.2.0-1
+
+The packages in the `mqtt_bridge_lcas` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release -n -t kinetic -r kinetic mqtt_bridge_lcas` on `Sat, 30 Jan 2021 20:33:58 -0000`
+
+The `mqtt_bridge` package was released.
+
+Version of package(s) in repository `mqtt_bridge_lcas`:
+
+- upstream repository: https://github.com/LCAS/mqtt_bridge.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.2.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.0`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.20.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## mqtt_bridge_lcas (melodic) - 1.2.0-1
 
 The packages in the `mqtt_bridge_lcas` repository were released into the `melodic` distro by running `/usr/bin/bloom-release -t melodic -r melodic mqtt_bridge_lcas` on `Sat, 30 Jan 2021 20:31:07 -0000`
