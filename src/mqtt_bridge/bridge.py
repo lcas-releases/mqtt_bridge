@@ -17,10 +17,7 @@ def create_bridge(factory, **kwargs):
     u""" bridge generator function
 
     :param (str|class) factory: Bridge class
-    :param (str|class) msg_type: ROS message type
-    :param str topic_from: incoming topic path
-    :param str topic_to: outgoing topic path
-    :param (float|None) frequency: publish frequency
+    :param kwargs: bridge-specific arguments
     :return Bridge: bridge object
     """
     if isinstance(factory, basestring):
@@ -46,14 +43,9 @@ class Bridge(object):
 
 
 class DynamicBridgeServer(Bridge):
-    u""" Bridge from ROS topic to MQTT
-
-    :param str topic_from: incoming ROS topic path
-    :param str topic_to: outgoing MQTT topic path
-    :param class msg_type: subclass of ROS Message
-    :param (float|None) frequency: publish frequency
-    :param bool latched: retain the last message on the MQTT topic (default: False)
-    :param int qos: MQTT quality of service (default: 0, max: 2)
+    u""" Dynamic Bridge Server that serves as the remote end to PublishBridge 
+    and SubscribeBridge, as well as the RemoteService. Should always be instantiated if 
+    indeed the purpose is bridging between ROS-sides.
     """
 
     def __init__(self, control_topic="__dynamic_server"):
@@ -118,19 +110,34 @@ class DynamicBridgeServer(Bridge):
         """
         msg_dict = self._deserialize(mqtt_msg.payload)
 
+        def __bridge_exists(args):
+            for __bridge in self._bridges:
+                if __bridge._topic_from == args['topic_to'] and\
+                        __bridge._topic_to == args['topic_from']:
+                    return True
+            return False
+
         if msg_dict['op'] == 'mqtt2ros_subscribe':
-            rospy.loginfo("forward mqtt topic to ros %s" % (
-                msg_dict['args']))
-            self._bridges.add(MqttToRosBridge(
-                **msg_dict['args'])
-            )
+            if not __bridge_exists(msg_dict['args']):
+                rospy.loginfo("forward mqtt topic to ros %s" % (
+                    msg_dict['args']))
+                self._bridges.add(MqttToRosBridge(
+                    **msg_dict['args'])
+                )
+            else:
+                rospy.loginfo("bridge for %s already initialised" % (
+                    msg_dict['args']))
 
         if msg_dict['op'] == 'ros2mqtt_subscribe':
-            rospy.loginfo("forward ros topic to mqtt %s" % (
-                msg_dict['args']))
-            self._bridges.add(RosToMqttBridge(
-                **msg_dict['args'])
-            )
+            if not __bridge_exists(msg_dict['args']):
+                rospy.loginfo("forward ros topic to mqtt %s" % (
+                    msg_dict['args']))
+                self._bridges.add(RosToMqttBridge(
+                    **msg_dict['args'])
+                )
+            else:
+                rospy.logwarn("bridge for %s already initialised" % (
+                    msg_dict['args']))
 
 
 class RosToMqttBridge(Bridge):
