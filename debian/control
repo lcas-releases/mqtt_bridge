@@ -1,0 +1,12 @@
+Source: ros-melodic-mqtt-bridge
+Section: misc
+Priority: optional
+Maintainer: Marc Hanheide <marc@hanheide.net>
+Build-Depends: debhelper (>= 9.0.0), python-pip, python-setuptools, ros-melodic-catkin
+Homepage: http://www.ros.org/wiki/mqtt_bridge
+Standards-Version: 3.9.2
+
+Package: ros-melodic-mqtt-bridge
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-rosbridge-library, ros-melodic-rospy, ros-melodic-std-msgs
+Description: The mqtt_bridge package
