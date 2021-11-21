@@ -1,0 +1,23 @@
+## mqtt_bridge_lcas (melodic) - 1.4.0-1
+
+The packages in the `mqtt_bridge_lcas` repository were released into the `melodic` distro by running `/Users/mhanheide/.local/lib/mambaforge/envs/ros_env/bin/bloom-release -n -r melodic -t melodic mqtt_bridge_lcas` on `Sun, 21 Nov 2021 10:25:06 -0000`
+
+The `mqtt_bridge` package was released.
+
+Version of package(s) in repository `mqtt_bridge_lcas`:
+
+- upstream repository: https://github.com/LCAS/mqtt_bridge.git
+- release repository: https://github.com/lcas-releases/mqtt_bridge.git
+- rosdistro version: `1.2.2-1`
+- old version: `null`
+- new version: `1.4.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.24`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
