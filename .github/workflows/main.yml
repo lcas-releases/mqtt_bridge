@@ -44,3 +44,7 @@ jobs:
       - name: Build packages
         run: |
           docker run --rm -e GPG_KEY="" -e PACKAGE_NAME=mqtt_bridge -v $GITHUB_WORKSPACE:/package lcas/debuild
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Deb packages
+          path: ros-melodic-*
