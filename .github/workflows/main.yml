@@ -24,6 +24,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           path: mqtt_bridge
           ref: debian/ros-melodic-mqtt-bridge_1.4.0-1_bionic
       - name: Get the Dockerfile and run.sh
