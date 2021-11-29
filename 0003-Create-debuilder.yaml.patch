@@ -1,0 +1,83 @@
+From 264e605b8aebdb4461b44b54e59d247beefb1512 Mon Sep 17 00:00:00 2001
+From: Marc Hanheide <marc@hanheide.net>
+Date: Mon, 29 Nov 2021 20:34:17 +0000
+Subject: [PATCH 3/4] Create debuilder.yaml
+
+---
+ .github/workflows/debuilder.yaml | 64 ++++++++++++++++++++++++++++++++
+ 1 file changed, 64 insertions(+)
+ create mode 100644 .github/workflows/debuilder.yaml
+
+diff --git a/.github/workflows/debuilder.yaml b/.github/workflows/debuilder.yaml
+new file mode 100644
+index 0000000..c80be7c
+--- /dev/null
++++ b/.github/workflows/debuilder.yaml
+@@ -0,0 +1,64 @@
++# This is a basic workflow to help you get started with Actions
++
++name: debuilder
++
++on:
++  push:
++    branches:
++      - "!*"
++    tags:
++      - "debian/**"
++
++# Controls when the workflow will run
++#on:
++  # Triggers the workflow on push or pull request events but only for the master branch
++#  push:
++#    branches: [ master ]
++#    tags:
++#      - 'debian/**'
++#  pull_request:
++#    branches: [ master ]
++
++# A workflow run is made up of one or more jobs that can run sequentially or in parallel
++jobs:
++  build_deb:
++    #if: ${{ startsWith(github.ref, 'refs/tags/debian/ros') }}
++    # The type of runner that the job will run on
++    runs-on: ubuntu-latest
++    # Steps represent a sequence of tasks that will be executed as part of the job
++    steps:
++      - name: Import GPG
++        uses: crazy-max/ghaction-import-gpg@v4.1.0
++        with:
++          # GPG private key exported as an ASCII armored version or its base64 encoding
++          gpg_private_key: ${{ secrets.DEB_SIGN_PRIV_KEY }}
++      - name: check keys
++        run: gpg -K && gpg -k
++      - uses: actions/checkout@v2
++        with:
++          fetch-depth: 0
++          path: __package
++          ref: debian/ros-melodic-mqtt-bridge_1.4.0-1_bionic
++      - name: Get the Dockerfile and run.sh
++        run: |
++          curl -o Dockerfile https://raw.githubusercontent.com/marc-hanheide/docker-dpkg-build/master/Dockerfile
++          curl -o run.sh https://raw.githubusercontent.com/marc-hanheide/docker-dpkg-build/master/run.sh
++      - name: Docker Login dockerhub
++        uses: docker/login-action@v1.10.0
++        with:
++          # Username used to log against the Docker registry
++          username: ${{ secrets.DOCKERHUB_USER }}
++          # Password or personal access token used to log against the Docker registry
++          password: ${{ secrets.DOCKERHUB_TOKEN }}
++      - name: Build the Docker image
++        run: |
++          docker build --file Dockerfile --build-arg BASE_IMAGE=ubuntu:bionic --tag lcas/debuild:latest .
++      # Runs a single command using the runners shell
++      - name: Build packages
++        run: |
++          docker run --rm -e GPG_KEY="" -e GPG_KEY=920D962674D20298F82483C72B1C511EE8905F4E -e PACKAGE_NAME=__package -v /home/runner/.gnupg:/root/.gnupg:ro -v $GITHUB_WORKSPACE:/package lcas/debuild
++          find $GITHUB_WORKSPACE
++      - uses: actions/upload-artifact@v2
++        with:
++          name: Deb packages
++          path: ros-melodic-*
+-- 
+2.17.1
+
