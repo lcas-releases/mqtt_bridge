@@ -17,7 +17,7 @@ tracks:
     devel_branch: melodic-devel
     last_version: 1.4.1
     name: upstream
-    patches: null
+    patches: melodic
     release_inc: '1'
     release_repo_url: null
     release_tag: :{version}
