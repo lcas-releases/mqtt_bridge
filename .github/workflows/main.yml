@@ -41,9 +41,15 @@ jobs:
         run: |
           docker build --file Dockerfile --build-arg BASE_IMAGE=ubuntu:bionic --tag lcas/debuild:latest .
       # Runs a single command using the runners shell
+      - name: Import GPG
+        # You may pin to the exact commit or the version.
+        uses: crazy-max/ghaction-import-gpg@v4.1.0
+        with:
+          # GPG private key exported as an ASCII armored version or its base64 encoding
+          gpg_private_key: ${{ secrets.DEB_SIGN_PRIV_KEY }}
       - name: Build packages
         run: |
-          docker run --rm -e GPG_KEY="" -e PACKAGE_NAME=mqtt_bridge -v $GITHUB_WORKSPACE:/package lcas/debuild
+          docker run --rm -e GPG_KEY="" -e GPG_KEY=920D962674D20298F82483C72B1C511EE8905F4E -e PACKAGE_NAME=mqtt_bridge -v $GITHUB_WORKSPACE:/package lcas/debuild
           find $GITHUB_WORKSPACE
       - uses: actions/upload-artifact@v2
         with:
