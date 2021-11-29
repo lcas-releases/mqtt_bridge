@@ -36,4 +36,4 @@ jobs:
       # Runs a single command using the runners shell
       - name: Build packages
         run: |
-          docker run -it --rm -e GPG_KEY="" -e PACKAGE_NAME=mqtt_bridge -v $GITHUB_WORKSPACE:/package debuild
+          docker run --rm -e GPG_KEY="" -e PACKAGE_NAME=mqtt_bridge -v $GITHUB_WORKSPACE:/package debuild
