@@ -8,7 +8,7 @@ on:
   push:
     branches: [ master ]
     tags:
-    - 'debian/ros-*'
+    - 'debian/**'
   pull_request:
     branches: [ master ]
 
