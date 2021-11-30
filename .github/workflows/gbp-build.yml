@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: debuilder
+
+on:
+  workflow_call:
+  push:
+    branches:
+      - "!*"
+    tags:
+      - "debian/**"
+
+# Controls when the workflow will run
+#on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+#  push:
+#    branches: [ master ]
+#    tags:
+#      - 'debian/**'
+#  pull_request:
+#    branches: [ master ]
+
+
+jobs:
+  call-ros-ci-build-melodic:
+    uses: LCAS/rosdistro/.github/workflows/_lcas_debuilder.yaml@master
+    with:
+      ros_distribution: melodic
+      docker_image: ubuntu:bionic
+    secrets:
+      gpg_private_key: ${{ secrets.DEB_SIGN_PRIV_KEY }}
+      dockerhub_user: ${{ secrets.DOCKERHUB_USER }}
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+      gpg_key_id: ${{ secrets.DEB_SIGN_KEY_ID }}
+
