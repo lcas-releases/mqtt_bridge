@@ -2,8 +2,12 @@
 Changelog for package mqtt_bridge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.4.2 (2022-07-21)
+------------------
+* Merge pull request `#17 <https://github.com/LCAS/mqtt_bridge/issues/17>`_ from LCAS/bugfix_loggers
+  fixing missing function enable_loggers
+* fixing missing function enable_loggers
+* Contributors: Marc Hanheide, Your Name
 
 1.4.0 (2021-11-19 13:31)
 ------------------------
